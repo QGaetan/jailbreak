@@ -30,27 +30,40 @@ function ResetGame()
 
 end
 
-function StartGame() 
+function SetRoles()
 
-	-- Random team
-	for _, playerid in pairs(GetAllPlayers()) do		
-		if #Teams.guardian < GetPlayerCount() / 3 then
-			team = Random(1, 2)
-		else 
-			team = 1
-		end
+	-- Prisoner
+	for _, playerId in pairs(GetAllPlayers()) do
+		Teams.prisoner[playerId] = true
+	end
 
-		if team == 1 then
-			table.insert(Teams.prisoner, playerid)
-			ChangeClothing(playerid, "prisoner")
-		else 
-			table.insert(Teams.guardian, playerid)
-			ChangeClothing(playerid, "guardian")
+	-- Guardian
+	local notReady = true
+	while notReady do
+		for playerId, _ in ipairs(Teams.prisoner) do
+			if 2 == Random(1, 2) then
+				Teams.guardian[playerId] = true
+				Teams.prisoner[playerId] = nil
+			end
+
+			if #Teams.guardian > #Teams.prisoner / 3 then
+				notReady = false
+				break
+			end			
 		end
 	end
 
+end
+
+-- TODO : Forcer le nombre max de guardian
+function StartGame() 
+
+	SetRoles()
+
 	-- Tp to spawn / jail
 	for index, playerid in pairs(Teams.prisoner) do
+
+		ChangeClothing(playerid, "prisoner")
 		local jail = Jails[index]
 		SetPlayerLocation(playerid, jail.x, jail.y, jail.z + 100)
 
@@ -66,6 +79,7 @@ function StartGame()
 	end
 
 	for index, playerid in pairs(Teams.guardian) do
+		ChangeClothing(playerid, "guardian")
 		SetPlayerLocation(playerid, Guardians.x, Guardians.y, Guardians.z + 100)
 		SetPlayerWeapon(playerid, 8, 200, true, 1, true)
 	end

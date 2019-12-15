@@ -7,24 +7,22 @@
 
 Players = {}
 
--- TODO 
--- AddEvent("OnPlayerSteamAuth", function(playerid)
--- 	Players[playerid] = { steamId : GetPlayerSteamId(playerid) }
--- end)
+
+-- Get steamId
+AddEvent("OnPlayerSteamAuth", function(playerId)
+	Players[playerId].steamId = GetPlayerSteamId(playerId)
+end)
 
 -- Spawn player
 AddEvent("OnPlayerJoin", function(playerid)
 
-	if gameIsStart == false then
-		local spawnLocation = Spawns[Random(1, #Spawns)]
-		SetPlayerSpawnLocation(playerid, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
-	--else
-		--SetPlayerSpectate(playerid, true)
-	end
+	local spawnLocation = Spawns[Random(1, #Spawns)]
+	SetPlayerSpawnLocation(playerid, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
+
+	-- Init player
+	Players[playerid] = {}
 
 	AddPlayerChatAll('<span color="#eeeeeeaa">' .. GetPlayerName(playerid) .. ' (' .. playerid .. ') joined the server</>')
-	AddPlayerChatAll('<span color="#eeeeeeaa">There are ' .. GetPlayerCount() .. ' players on the server</>')
-	AddPlayerChat(playerid, "Welcome to the server!")
 
 end)
 

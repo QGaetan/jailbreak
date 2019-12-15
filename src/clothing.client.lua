@@ -7,9 +7,6 @@
 
 function ChangeClothing(playerId, type)
 
-	AddPlayerChat(playerId)
-	AddPlayerChat(type)
-
 	local config = Clothing[type]
 
 	-- Body
@@ -40,7 +37,7 @@ function ChangeClothing(playerId, type)
 	-- --SkeletalMeshComponent:SetSkeletalMesh(USkeletalMesh.LoadFromAsset("/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Police_Hat_LPR"))
 
 	-- 
-	SkeletalMeshComponent = GetPlayerSkeletalMeshComponent(GetPlayerId(), "Clothing1")
+	SkeletalMeshComponent = GetPlayerSkeletalMeshComponent(playerId, "Clothing1")
 	SkeletalMeshComponent:SetSkeletalMesh(USkeletalMesh.LoadFromAsset(config.clothing1))
 	
 	-- 
