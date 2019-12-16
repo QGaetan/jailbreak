@@ -22,12 +22,12 @@ function StartPlayersLocation()
 
 				ChangeClothing(playerId, "prisoner")
 				local jailLocation = Jails[jail]
-				--SetPlayerLocation(playerId, jailLocation.x, jailLocation.y, jailLocation.z + 100)
+				SetPlayerLocation(playerId, jailLocation.x, jailLocation.y, jailLocation.z + 100)
 
 				-- Give weapon (Random)
 				local luck = Random(1, 20)
 				if luck == 13 then
-					AddPlayerChat(playerId, "Regarde tu a trouver une arme sous le matelas !")
+					AddPlayerChat(playerId, "Regard, tu viens de trouver une arme sous le matelas !")
 					SetPlayerWeapon(playerId, 3, Random(5, 20), false, 2, false)
 				end
 
@@ -36,7 +36,7 @@ function StartPlayersLocation()
 			elseif Players[playerId].role == "guardian" then
 
 				ChangeClothing(playerId, "guardian")
-				--SetPlayerLocation(playerId, Guardians.x, Guardians.y, Guardians.z + 100)
+				SetPlayerLocation(playerId, Guardians.x, Guardians.y, Guardians.z + 100)
 				SetPlayerWeapon(playerId, 8, 200, true, 1, true)
 
 			end
@@ -96,8 +96,6 @@ end)
 --
 AddEvent("OnPlayerQuit", function(playerId)
 
-	Players[playerId] = nil
-
 	-- Remove player on team
 	if Players[playerId].role then
 		local role = Players[playerId].role
@@ -107,6 +105,8 @@ AddEvent("OnPlayerQuit", function(playerId)
 			Players[playerId].role = nil
 		end
 	end
+
+	Players[playerId] = nil
 
 end)
 

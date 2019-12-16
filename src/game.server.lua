@@ -5,17 +5,8 @@
 -- @Source: https://github.com/Onset-minigames
 --
 
-gameIsStart = false
-
---
---
---
-function ResetGame()
-
-	ResetRoles()
-	ResetDoors()
-
-end
+minPlayer = 3
+gameStatus = 0
 
 --
 --
@@ -24,7 +15,8 @@ function StartGame()
 
 	SetRole()
 	StartPlayersLocation()
-	AddPlayerChatAll('<span color="#eeeeeeaa">Que le jeux commence !</>')
+	AddPlayerChatAll('<span color="#eeeeeeaa">Que le jeu commence !</>')
+	gameStatus = 2
 
 end
 
@@ -34,20 +26,18 @@ end
 local CheckTimer = nil
 function RunTimer()
 	
-	CheckTimer = CreateTimer(function(Roles)
+	CheckTimer = CreateTimer(function()
 
-		if GetPlayerCount() >= 3 and gameIsStart == false then
-			gameIsStart = true
-			ResetGame()
+		if GetPlayerCount() >= minPlayer and gameStatus == 0 then
+			gameStatus = 1
 			StartGame()
-		elseif (#Roles.prisoner == 0 or #Roles.guardian == 0) and gameIsStart == true then
-			gameIsStart = false
-			print("CheckEndGame : ", #Roles.prisoner, #Roles.guardian)
-			AddPlayerChatAll('<span color="#eeeeeeaa">Fin du jeux, GG à tous !</>')
+		elseif (Count(Roles.prisoner) == 0 or Count(Roles.guardian) == 0) and gameStatus == 2 then
+			gameStatus = 0
+			AddPlayerChatAll('<span color="#eeeeeeaa">Fin du jeu, GG à tous !</>')
 			EndGame()
 		end
 
-	end, 5000, Roles)
+	end, 5000)
 
 end
 
@@ -56,21 +46,25 @@ end
 --
 function EndGame()
 
+	ResetRoles()
+	ResetDoors()
+
 	for _, playerId in pairs(GetAllPlayers()) do
 
 		-- Remove All weapons
 		SetPlayerWeapon(playerId, 1, 0, true, 1, true)
 		SetPlayerWeapon(playerId, 1, 0, true, 2, true)
 		SetPlayerWeapon(playerId, 1, 0, true, 3, true)
+		SetPlayerHealth(playerId, 0)
 
-		-- Set Health
-		if not IsPlayerDead(playerId) then
-			SetPlayerHealth(playerId, 100)
-			SpawnPlayer()
-		else
-			SetPlayerRespawnTime(playerId, 60)
-		end
+		Delay(1000, function( ... )
+			SetPlayerRespawnTime(playerId, 1000) -- 1s
+		end)
 
 	end
 
 end
+
+AddCommand("min", function(playerid, number)
+	minPlayer = tonumber(number)
+end)
