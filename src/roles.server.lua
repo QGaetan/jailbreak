@@ -5,13 +5,13 @@
 -- @Source: https://github.com/Onset-minigames
 --
 
-Teams = {
+Roles = {
 	prisoner = {},
 	guardian = {},
 }
 
-function ResetTeams()
-	Teams = {
+function ResetRoles()
+	Roles = {
 		prisoner = {},
 		guardian = {},
 	}
@@ -20,20 +20,20 @@ end
 --
 --
 --
-function SetTeam()
+function SetRole()
 
 	-- Prisoner
 	for _, playerId in pairs(GetAllPlayers()) do
-		Teams.prisoner[playerId] = true
+		Roles.prisoner[playerId] = true
 		Players[playerId].role = "prisoner"
 	end
 
 	-- Guardian
 	local needGuardian = 0
-	if #Teams.prisoner < 5 then
+	if #Roles.prisoner < 5 then
 		needGuardian = 1
 	else 
-		for i = 1, #Teams.prisoner do
+		for i = 1, #Roles.prisoner do
 			if i % 3 == 0 then
 				needGuardian = needGuardian + 1
 			end
@@ -42,10 +42,10 @@ function SetTeam()
 
 	local total = 1
 	while total <= needGuardian do -- 1 => needGuardian
-		for playerId, _ in ipairs(Teams.prisoner) do
+		for playerId, _ in ipairs(Roles.prisoner) do
 			if Random(1, 4) == 2 and total <= needGuardian then
-				Teams.guardian[playerId] = true
-				Teams.prisoner[playerId] = nil
+				Roles.guardian[playerId] = true
+				Roles.prisoner[playerId] = nil
 				Players[playerId].role = "guardian"
 				print("Add " .. playerId .. " to guardian")
 				total = total + 1

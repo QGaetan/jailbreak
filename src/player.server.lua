@@ -64,7 +64,7 @@ end
 function SpawnPlayer(playerId)
 
 	local spawnLocation = Spawns[Random(1, #Spawns)]
-	SetPlayerLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
+	SetPlayerLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200)
 
 end
 
@@ -101,8 +101,9 @@ AddEvent("OnPlayerQuit", function(playerId)
 	-- Remove player on team
 	if Players[playerId].role then
 		local role = Players[playerId].role
-		if Teams[role][playerId] then
-			Teams[role][playerId] = nil
+		if Roles[role][playerId] then
+			print("remove role !")
+			Roles[role][playerId] = nil
 			Players[playerId].role = nil
 		end
 	end
@@ -117,9 +118,9 @@ AddEvent('OnPlayerDeath', function(playerId, instigator)
 	-- Remove player on team
 	if Players[playerId].role then
 		local role = Players[playerId].role
-		if Teams[role][playerId] then
+		if Roles[role][playerId] then
 			print("remove role !")
-			Teams[role][playerId] = nil
+			Roles[role][playerId] = nil
 			Players[playerId].role = nil
 			SetPlayerSpectate(playerId, true)
 		end

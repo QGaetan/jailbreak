@@ -12,25 +12,8 @@ gameIsStart = false
 --
 function ResetGame()
 
-	ResetTeams()
+	ResetRoles()
 	ResetDoors()
-	RemoveAllWeapons()
-	gameIsStart = false
-
-end
-
---
---
---
-local CheckStartTimer = nil
-function CheckStartGame()
-
-	CheckStartTimer = CreateTimer(function()
-		if GetPlayerCount() > 3 then
-			ResetGame()
-			StartGame()
-		end
-	end, 5000) -- 5s
 
 end
 
@@ -39,12 +22,8 @@ end
 --
 function StartGame() 
 
-	DestroyTimer(CheckEndTimer)
-	SetRoles()
+	SetRole()
 	StartPlayersLocation()
-	CheckEndGame()
-	gameIsStart = true
-
 	AddPlayerChatAll('<span color="#eeeeeeaa">Que le jeux commence !</>')
 
 end
@@ -52,16 +31,23 @@ end
 --
 --
 --
-local CheckEndTimer = nil
-function CheckEndGame()
+local CheckTimer = nil
+function RunTimer()
 	
-	CheckEndTimer = CreateTimer(function(Teams)
-		print("CheckEndGame : ", #Teams.prisoner, #Teams.guardian)
-		if #Teams.prisoner == 0 or #Teams.guardian == 0 then
+	CheckTimer = CreateTimer(function(Roles)
+
+		if GetPlayerCount() >= 3 and gameIsStart == false then
+			gameIsStart = true
+			ResetGame()
+			StartGame()
+		elseif (#Roles.prisoner == 0 or #Roles.guardian == 0) and gameIsStart == true then
+			gameIsStart = false
+			print("CheckEndGame : ", #Roles.prisoner, #Roles.guardian)
 			AddPlayerChatAll('<span color="#eeeeeeaa">Fin du jeux, GG à tous !</>')
 			EndGame()
 		end
-	end, 5000, Teams) -- 5s
+
+	end, 5000, Roles)
 
 end
 
@@ -70,9 +56,6 @@ end
 --
 function EndGame()
 
-	DestroyTimer(CheckEndTimer)
-	gameIsStart = false
-	
 	for _, playerId in pairs(GetAllPlayers()) do
 
 		-- Remove All weapons
@@ -87,9 +70,6 @@ function EndGame()
 		else
 			SetPlayerRespawnTime(playerId, 60)
 		end
-
-		-- Start Timer
-		CheckStartGame()
 
 	end
 

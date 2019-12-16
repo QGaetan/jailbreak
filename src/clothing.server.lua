@@ -41,5 +41,5 @@ end)
 
 AddCommand("role", function(playerId, roleName) 
 	ChangeClothing(playerId, roleName)
-	Teams[roleName][playerId] = true
+	Roles[roleName][playerId] = true
 end)

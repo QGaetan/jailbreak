@@ -16,7 +16,7 @@ AddEvent("OnPackageStart", function()
 
 	-- Create Doors
 	CreateDoors()
-	CheckStartGame()
+	RunTimer()
 
 end)
 
