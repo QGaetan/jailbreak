@@ -5,20 +5,6 @@
 -- @Source: https://github.com/Onset-minigames
 --
 
-function CreateNpcs()
-	for index, value in ipairs(Guardian) do
-		local id = CreateNPC(value.x, value.y, value.z + 100, 0.0)
-		Guardian[index].id = id
-	end
-end
-
-function DeleteNpcs()
-	for index, value in ipairs(Guardian) do
-		DestroyNPC(Guardian[index].id)
-	end
-end
-
-
 AddEvent("OnPackageStop", function()
 
 	-- Delete Doors
@@ -49,11 +35,6 @@ end)
 
 AddCommand("delete", function()
 	DeleteDoors()
-	DeleteNpcs()
-end)
-
-AddCommand("npc", function()
-	CreateNpcs()
 end)
 
 AddCommand("door", function()
@@ -66,11 +47,6 @@ AddCommand("save", function(playerid)
 end)
 
 -- TP
-AddCommand("lobby", function(playerid)
-	AddPlayerChat(playerid, "Tp to spawn")
-	SetPlayerLocation(playerid, -181549.65625, 70941.421875, 1528.1500244141)
-end)
-
 AddCommand("jail", function(playerid)
 	AddPlayerChat(playerid, "Tp to jail")
 	SetPlayerLocation(playerid, -169570.546875, 82545.5234375, 1528.1500244141)
@@ -101,29 +77,8 @@ AddCommand("tpd", function(playerid)
 	SetPlayerLocation(playerid, -174137.28125, 80168.4140625, 1628.1499023438)
 end)
 
-
 -- TODO : REMOVE ME
 AddCommand("spawn", function(playerId)
-
 	local spawnLocation = Spawns[Random(1, #Spawns)]
 	SetPlayerLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 100, 90.0)
-
-end)
-
--- TODO : Forum config touche
-AddCommand("spec", function(playerId, status)
-
-	SetPlayerSpectate(playerId, status)
-
-end)
-
-AddCommand("player", function(playerId)
-
-	SetPlayerRespawnTime(playerId, 60 * 60 * 1000) -- 1 heure
-	Players[playerId] = {}
-
-end)
-
-AddCommand("test", function(playerid)
-	CheckStartGame()
 end)

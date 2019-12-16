@@ -68,6 +68,45 @@ AddEvent('OnPlayerDeath', function(playerId, instigator)
 
 end)
 
+--
+-- Spawn jail or administration
+--
+function StartPlayersLocation()
+
+	local jail = 1
+	for _, playerId in pairs(GetAllPlayers()) do
+		
+		if Players[playerId].role then
+
+			SetPlayerHealth(playerId, 100)
+			if Players[playerId].role == "prisoner" then
+
+				ChangeClothing(playerId, "prisoner")
+				local jailLocation = Jails[jail]
+				--SetPlayerLocation(playerId, jailLocation.x, jailLocation.y, jailLocation.z + 100)
+
+				-- Give weapon (Random)
+				local luck = Random(1, 20)
+				if luck == 13 then
+					AddPlayerChat(playerId, "Regarde tu a trouver une arme sous le matelas !")
+					SetPlayerWeapon(playerId, 3, Random(5, 20), false, 2, false)
+				end
+
+				jail = jail + 1
+
+			elseif Players[playerId].role == "guardian" then
+
+				ChangeClothing(playerId, "guardian")
+				--SetPlayerLocation(playerId, Guardians.x, Guardians.y, Guardians.z + 100)
+				SetPlayerWeapon(playerId, 8, 200, true, 1, true)
+
+			end
+
+		end
+	end
+
+end
+
 
 -- Tempo fix
 -- AddEvent("OnPlayerSpawn", function(playerId)

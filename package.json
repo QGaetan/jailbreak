@@ -1,5 +1,5 @@
 {
-	"author": "Samas92i",
+	"author": "samuelds",
 	"version": "1.0",
 	"client_scripts": [
 		"config.client.lua",
@@ -10,10 +10,11 @@
 	"server_scripts": [
 		"config.server.lua",
 		"src/chat.server.lua",
+		"src/teams.server.lua",
 		"src/clothing.server.lua",
 		"src/doors.server.lua",
 		"src/player.server.lua",
 		"src/game.server.lua",
-		"src/server.lua"
+		"src/package.server.lua"
 	]
 }

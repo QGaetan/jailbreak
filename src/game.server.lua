@@ -6,10 +6,6 @@
 --
 
 gameIsStart = false
-Teams = {
-	prisoner = {},
-	guardian = {}
-}
 
 --
 --
@@ -33,84 +29,6 @@ function ResetGame()
 	end
 
 	gameIsStart = false
-
-end
-
---
---
---
-function SetRoles()
-
-	-- Prisoner
-	for _, playerId in pairs(GetAllPlayers()) do
-		Teams.prisoner[playerId] = true
-		Players[playerId].role = "prisoner"
-	end
-
-	-- Guardian
-	local needGuardian = 0
-	if #Teams.prisoner < 5 then
-		needGuardian = 1
-	else 
-		for i = 1, #Teams.prisoner do
-			if i % 3 == 0 then
-				needGuardian = needGuardian + 1
-			end
-		end
-	end
-
-	local total = 1
-	while total <= needGuardian do -- 1 => needGuardian
-		for playerId, _ in ipairs(Teams.prisoner) do
-			if Random(1, 4) == 2 and total <= needGuardian then
-				Teams.guardian[playerId] = true
-				Teams.prisoner[playerId] = nil
-				Players[playerId].role = "guardian"
-				print("Add " .. playerId .. " to guardian")
-				total = total + 1
-			end
-		end
-		print("Boucle !!!")
-	end
-
-end
-
---
--- Spawn jail or administration
---
-function StartPlayersLocation()
-
-	local jail = 1
-	for _, playerId in pairs(GetAllPlayers()) do
-		
-		if Players[playerId].role then
-
-			SetPlayerHealth(playerId, 100)
-			if Players[playerId].role == "prisoner" then
-
-				ChangeClothing(playerId, "prisoner")
-				local jailLocation = Jails[jail]
-				--SetPlayerLocation(playerId, jailLocation.x, jailLocation.y, jailLocation.z + 100)
-
-				-- Give weapon (Random)
-				local luck = Random(1, 20)
-				if luck == 13 then
-					AddPlayerChat(playerId, "Regarde tu a trouver une arme sous le matelas !")
-					SetPlayerWeapon(playerId, 3, Random(5, 20), false, 2, false)
-				end
-
-				jail = jail + 1
-
-			elseif Players[playerId].role == "guardian" then
-
-				ChangeClothing(playerId, "guardian")
-				--SetPlayerLocation(playerId, Guardians.x, Guardians.y, Guardians.z + 100)
-				SetPlayerWeapon(playerId, 8, 200, true, 1, true)
-
-			end
-
-		end
-	end
 
 end
 
@@ -180,25 +98,3 @@ function EndGame()
 	end
 
 end
-
-AddCommand("start", function(playerId) 
-
-	ResetGame()
-	StartGame()
-
-end)
-
-AddCommand("end", function(playerId) 
-
-	EndGame()
-
-end)
-
-
-AddCommand("opendoor", function(playerId, name) 
-	ToogleDoorsGroup(name)
-end)
-
-AddCommand("kill", function(playerId) 
-	SetPlayerHealth(playerId, 0)
-end)
