@@ -121,7 +121,7 @@ local CheckStartTimer = nil
 function CheckStartGame()
 
 	CheckStartTimer = CreateTimer(function()
-		if GetPlayerCount() > 5 then
+		if GetPlayerCount() > 3 then
 			ResetGame()
 			StartGame()
 		end
@@ -134,7 +134,7 @@ end
 --
 function StartGame() 
 
-	DestroyTimer(CheckStartTimer)
+	DestroyTimer(CheckEndTimer)
 	SetRoles()
 	StartPlayersLocation()
 	CheckEndGame()
@@ -150,12 +150,13 @@ end
 local CheckEndTimer = nil
 function CheckEndGame()
 	
-	CheckEndTimer = CreateTimer(function()
+	CheckEndTimer = CreateTimer(function(Teams)
+		print("CheckEndGame : ", #Teams.prisoner, #Teams.guardian)
 		if #Teams.prisoner == 0 or #Teams.guardian == 0 then
 			AddPlayerChatAll('<span color="#eeeeeeaa">Fin du jeux, GG à tous !</>')
 			EndGame()
 		end
-	end, 5000) -- 5s
+	end, 5000, Teams) -- 5s
 
 end
 
