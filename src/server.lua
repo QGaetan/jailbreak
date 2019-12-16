@@ -30,6 +30,7 @@ AddEvent("OnPackageStart", function()
 
 	-- Create Doors
 	CreateDoors()
+	CheckStartGame()
 
 end)
 
@@ -98,4 +99,31 @@ end)
 AddCommand("tpd", function(playerid)
 	AddPlayerChat(playerid, "Tp to block D")
 	SetPlayerLocation(playerid, -174137.28125, 80168.4140625, 1628.1499023438)
+end)
+
+
+-- TODO : REMOVE ME
+AddCommand("spawn", function(playerId)
+
+	local spawnLocation = Spawns[Random(1, #Spawns)]
+	SetPlayerLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 100, 90.0)
+
+end)
+
+-- TODO : Forum config touche
+AddCommand("spec", function(playerId, status)
+
+	SetPlayerSpectate(playerId, status)
+
+end)
+
+AddCommand("player", function(playerId)
+
+	SetPlayerRespawnTime(playerId, 60 * 60 * 1000) -- 1 heure
+	Players[playerId] = {}
+
+end)
+
+AddCommand("test", function(playerid)
+	CheckStartGame()
 end)

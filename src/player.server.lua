@@ -7,42 +7,71 @@
 
 Players = {}
 
-
+--
 -- Get steamId
+--
 AddEvent("OnPlayerSteamAuth", function(playerId)
+
 	Players[playerId].steamId = GetPlayerSteamId(playerId)
+
 end)
 
+--
 -- Spawn player
-AddEvent("OnPlayerJoin", function(playerid)
+--
+AddEvent("OnPlayerJoin", function(playerId)
 
 	local spawnLocation = Spawns[Random(1, #Spawns)]
-	SetPlayerSpawnLocation(playerid, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
+	SetPlayerSpawnLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
+	SetPlayerRespawnTime(playerId, 60 * 60 * 1000) -- 1 heure
 
 	-- Init player
-	Players[playerid] = {}
+	Players[playerId] = {}
 
-	AddPlayerChatAll('<span color="#eeeeeeaa">' .. GetPlayerName(playerid) .. ' (' .. playerid .. ') joined the server</>')
+	AddPlayerChatAll('<span color="#eeeeeeaa">' .. GetPlayerName(playerId) .. ' (' .. playerId .. ') joined the server</>')
 
 end)
+
+--
+--
+--
+AddEvent("OnPlayerQuit", function(playerId)
+
+	Players[playerId] = nil
+
+	-- Remove player on team
+	if Players[playerId].role then
+		local role = Players[playerId].role
+		if Teams[role][playerId] then
+			Teams[role][playerId] = nil
+			Players[playerId].role = nil
+		end
+	end
+
+end)
+
+--
+--
+--
+AddEvent('OnPlayerDeath', function(playerId, instigator)
+
+	-- Remove player on team
+	if Players[playerId].role then
+		local role = Players[playerId].role
+		if Teams[role][playerId] then
+			print("remove role !")
+			Teams[role][playerId] = nil
+			Players[playerId].role = nil
+			SetPlayerSpectate(playerId, true)
+		end
+	end
+
+end)
+
 
 -- Tempo fix
--- AddEvent("OnPlayerSpawn", function(playerid)
+-- AddEvent("OnPlayerSpawn", function(playerId)
 -- 	local spawnLocation = Spawns[Random(1, #Spawns)]
--- 	SetPlayerSpawnLocation(playerid, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
+-- 	SetPlayerSpawnLocation(playerId, spawnLocation.x, spawnLocation.y, spawnLocation.z + 200, 90.0)
 -- 	print("spawn player")
 -- end)
-
--- TODO : REMOVE ME
-AddCommand("spawn", function(playerid)
-	local spawnLocation = Spawns[Random(1, #Spawns)]
-	SetPlayerLocation(playerid, spawnLocation.x, spawnLocation.y, spawnLocation.z + 100, 90.0)
-end)
-
--- TODO : Forum config touche
-AddCommand("spec", function(playerid)
-	SetPlayerSpectate(playerid, true)
-end)
-
--- TEST
--- CreateText3D("Ouvrir les portes", 25, -174119.0625, 84283.7109375, 1703.0708007813, 0.0, 0.0, 0.0)

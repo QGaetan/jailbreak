@@ -5,28 +5,23 @@
 -- @Source: https://github.com/Onset-minigames
 --
 
-function ChangeClothing(playerId, type)
+function ChangeClothing(playerId, playerClothing)
 
-	local config = Clothing[type]
+	local config = Clothing[playerClothing.role]
 
-	-- Body
-	local bodyNumber = Random(1, #BodyList)
-	local bodyAsset  = BodyList[bodyNumber]
-	local bodyColorNumber = Random(1, #BodyColors)
-	local bodyColor = BodyColors[bodyColorNumber]
+	-- Body	
+	local bodyAsset  = BodyList[playerClothing.bodyNumber]	
+	local bodyColor = BodyColors[playerClothing.bodyColorNumber]
 	local bodyRed, bodyGreen, bodyBlue = HexToRGBA("0x" .. bodyColor)
-
 	local SkeletalMeshComponent = GetPlayerSkeletalMeshComponent(playerId, "Body")
 	SkeletalMeshComponent:SetSkeletalMesh(USkeletalMesh.LoadFromAsset(bodyAsset))
 	SkeletalMeshComponent:SetMaterial(3, UMaterialInterface.LoadFromAsset(config.body))
 	SkeletalMeshComponent:SetFloatParameterOnMaterials("PupilScale", 1.3)
 	SkeletalMeshComponent:SetColorParameterOnMaterials("Skin Color", FLinearColor(bodyRed / 255, bodyGreen / 255, bodyBlue / 255, 0.0))
 
-	-- Hair
-	local hairNumber = Random(1, #HairList)
-	local hairAsset  = HairList[hairNumber]
-	local hairColorNumber = Random(1, #HairColors)
-	local hairColor = HairColors[hairColorNumber]
+	-- Hair	
+	local hairAsset  = HairList[playerClothing.hairNumber]
+	local hairColor = HairColors[playerClothing.hairColorNumber]
 	local hairRed, hairGreen, hairBlue = HexToRGBA("0x" .. hairColor)
 	SkeletalMeshComponent = GetPlayerSkeletalMeshComponent(playerId, "Clothing0")
 	SkeletalMeshComponent:SetSkeletalMesh(USkeletalMesh.LoadFromAsset(hairAsset))
@@ -61,6 +56,6 @@ function ChangeClothing(playerId, type)
 
 end
 
-AddRemoteEvent("ChangeClothing", function(playerId, type)
-	ChangeClothing(playerId, type)
+AddRemoteEvent("ChangeClothing", function(playerId, playerClothing)
+	ChangeClothing(playerId, playerClothing)
 end)

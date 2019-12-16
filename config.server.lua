@@ -31,24 +31,24 @@ Doors = {
 	{ type = 1, x = -178405.828125, y = 84532.812500, z = 1435.000000, rotation = -90.0, interact = false },
 
 	-- OUTSIDE WALL
-	{ type = 4, x = -169602.000000, y = 75812.000000, z = 1430.000000, rotation = 0.0, interact = false },
-	{ type = 4, x = -183678.000000, y = 81300.000000, z = 1430.000000, rotation = 180.0, interact = false },
+	{ type = 3, x = -169602.000000, y = 75812.000000, z = 1430.000000, rotation = 0.0, interact = false },
+	{ type = 3, x = -183678.000000, y = 81300.000000, z = 1430.000000, rotation = 180.0, interact = false },
 
 	-- INSIDE WALL
 	{ type = 4, x = -180602.000000, y = 79396.000000, z = 1430.000000, rotation = 90.0, interact = true },
 	{ type = 4, x = -178073.000000, y = 73598.000000, z = 1426.000000, rotation = 180.0, interact = true },
 
 	-- ANNEX OUTSIDE
-	{ type = 3, x = -171447.000000, y = 81782.000000, z = 1530.000000, rotation = 90.0, interact = true },
+	{ type = 4, x = -171447.000000, y = 81782.000000, z = 1530.000000, rotation = 90.0, interact = true },
 
 	-- NORTHEAST ENTRANCE OUTSIDE
-	{ type = 3, x = -180863.000000, y = 82754.000000, z = 1530.000000, rotation = 180.0, interact = true },
+	{ type = 4, x = -180863.000000, y = 82754.000000, z = 1530.000000, rotation = 180.0, interact = true },
 
 	-- SOUTH WING OUTSIDE
-	{ type = 3, x = -178762.000000, y = 77853.000000, z = 1530.000000, rotation = 180.0, interact = true },
+	{ type = 4, x = -178762.000000, y = 77853.000000, z = 1530.000000, rotation = 180.0, interact = true },
 
 	-- BLOCK C - GENERAL POPULATION OUTSIDE
-	{ type = 3, x = -181561.000000, y = 75052.000000, z = 1530.000000, rotation = 180.0, interact = true },
+	{ type = 4, x = -181561.000000, y = 75052.000000, z = 1530.000000, rotation = 180.0, interact = true },
 
 	-- OUTSIDE TOWER DOORS 1
 	{ type = 1, x = -184933.000000, y = 85744.000000, z = 2485.000000, rotation = 0.0, interact = false },
@@ -104,7 +104,7 @@ Doors = {
 	{ type = 8, x = -179440.000000, y = 79773.000000, z = 1886.000000, rotation = 180.0, interact = true },
 
 	-- INFIRMERY
-	{ type = 3, x = -176866.000000, y = 76157.000000, z = 1880.000000, rotation = 90.0, interact = true },
+	{ type = 1, x = -176866.000000, y = 76157.000000, z = 1880.000000, rotation = 90.0, interact = true },
 	{ type = 1, x = -176752.000000, y = 77896.000000, z = 1880.000000, rotation = -90.0, interact = true },
 	{ type = 1, x = -176994.000000, y = 76736.000000, z = 1880.000000, rotation = 0.0, interact = true },
 	{ type = 2, x = -178044.000000, y = 76378.000000, z = 1880.000000, rotation = 0.0, interact = true },
@@ -112,7 +112,7 @@ Doors = {
 	{ type = 2, x = -177989.203125, y = 76152.039062, z = 1880.000000, rotation = 90.0, interact = true },
 
 	-- CENTRAL CONTROLE
-	{ type = 3, x = -174541.000000, y = 77799.000000, z = 1880.000000, rotation = 0.0, interact = true },
+	{ type = 1, x = -174541.000000, y = 77799.000000, z = 1880.000000, rotation = 0.0, interact = true },
 	{ type = 1, x = -176637.000000, y = 77685.000000, z = 1880.000000, rotation = 180.0, interact = true },
 	{ type = 1, x = -176636.000000, y = 78034.000000, z = 1880.000000, rotation = -180.0, interact =  true },
 	{ type = 1, x = -178023.000000, y = 78149.000000, z = 1881.000000, rotation = 0.0, interact = true },
@@ -137,27 +137,30 @@ Doors = {
 	{ type = 2, x = -180154.000000, y = 82234.000000, z = 1530.000000, rotation = 180.0, interact = true },
 
 	-- CENTRALE
-	{ type = 10, x = -178740.000000, y = 78821.000000, z = 1528.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -178640.000000, y = 81759.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -178291.000000, y = 81862.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -178469.000000, y = 83409.000000, z = 1530.000000, rotation = -90.0, interact = true },
+	{ type = 10, x = -178740.000000, y = 78821.000000, z = 1528.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -178640.000000, y = 81759.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -178291.000000, y = 81862.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -178469.000000, y = 83409.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
 
 	-- REFECTORY (CUISINE) - INTERIOR
 	{ type = 1, x = -178725.000000, y = 81649.000000, z = 1530.000000, rotation = 0.0, interact = true },
 
+	-- REFECTORY OUTSIDE
+	{ type = 4, x = -178020.000000, y = 82168.000000, z = 1530.000000, rotation = 0.0, interact = true },
+
 	-- BLOCK A - OUTSIDE (GARDE)
-	{ type = 3, x = -173118.000000, y = 75867.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 3, x = -175962.000000, y = 74353.000000, z = 1530.000000, rotation = 180.0, interact = true }, -- WEST WING
+	{ type = 4, x = -173118.000000, y = 75867.000000, z = 1530.000000, rotation = 0.0, interact = true },
+	{ type = 4, x = -175962.000000, y = 74353.000000, z = 1530.000000, rotation = 180.0, interact = true }, -- WEST WING
 
 	-- BLOCK A - INTERIOR (GARDE)
 	{ type = 2, x = -173601.000000, y = 76147.000000, z = 1530.000000, rotation = -90.0, interact = true },
 	{ type = 2, x = -174428.000000, y = 75457.000000, z = 1530.000000, rotation = 90.0, interact = true },
 	{ type = 1, x = -174126.000000, y = 76145.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 3, x = -174894.000000, y = 76049.000000, z = 1530.000000, rotation = 0.0, interact =  true},
+	{ type = 4, x = -174894.000000, y = 76049.000000, z = 1530.000000, rotation = 0.0, interact =  true},
 	{ type = 2, x = -173838.000000, y = 74884.000000, z = 1530.000000, rotation = 180.0, interact = true },
 	{ type = 1, x = -174543.000000, y = 75173.000000, z = 1530.000000, rotation = 0.0, interact = true },
 	{ type = 1, x = -174875.000000, y = 71149.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 3, x = -175128.000000, y = 75457.000000, z = 1880.000000, rotation = 90.0, interact = true },
+	{ type = 4, x = -175128.000000, y = 75457.000000, z = 1880.000000, rotation = 90.0, interact = true },
 	{ type = 1, x = -174778.000000, y = 74756.000000, z = 1880.000000, rotation = 90.0, interact = true },
 	{ type = 2, x = -174428.000000, y = 75457.000000, z = 1880.000000, rotation = 90.0, interact = true },
 	{ type = 2, x = -173836.000000, y = 75572.000000, z = 1880.000000, rotation = 180.0, interact = true },
@@ -170,11 +173,11 @@ Doors = {
 	{ type = 1, x = -175931.000000, y = 75174.000000, z = 1530.000000, rotation = 0.0, interact = true },
 	{ type = 1, x = -175303.000000, y = 74074.000000, z = 1530.000000, rotation = 90.0, interact = true },
 	{ type = 9, x = -175375.000000, y = 74781.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -174290.000000, y = 77527.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -173939.000000, y = 77510.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -174931.000000, y = 75360.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -174898.000000, y = 74861.000000, z = 1530.000000, rotation = 180.0, interact =  true },
-	{ type = 10, x = -175556.000000, y = 74475.000000, z = 1530.000000, rotation = 180.0, interact = true },
+	{ type = 10, x = -174290.000000, y = 77527.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -173939.000000, y = 77510.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -174931.000000, y = 75360.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -174898.000000, y = 74861.000000, z = 1530.000000, rotation = 180.0, interact =  true, guardian = true },
+	{ type = 10, x = -175556.000000, y = 74475.000000, z = 1530.000000, rotation = 180.0, interact = true, guardian = true },
 
 	-- BLOCK A - CELL DOORS (1st Floor)
 	{ type = 11, x = -175014.000000, y = 73822.000000, z = 1535.000000, rotation = 180.0, interact = true, jail = true },
@@ -216,11 +219,17 @@ Doors = {
 	{ type = 12, x = -175002.000000, y = 71033.000000, z = 1885.000000, rotation = 90.0, interact = true, jail = true },
 	{ type = 12, x = -174652.000000, y = 71033.000000, z = 1885.000000, rotation = 90.0, interact = true, jail = true },
 
+	-- BLOCK A - METALIC DOORS (2nd Floor)
+	{ type = 10, x = -175138.000000, y = 75160.000000, z = 1880.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -175492.000000, y = 74910.000000, z = 1880.000000, rotation = 180.0, interact = true, guardian = true },
+	{ type = 10, x = -176990.000000, y = 75465.000000, z = 1880.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -177485.000000, y = 75112.000000, z = 1880.000000, rotation = 0.0, interact = true, guardian = true },
+
 	-- CORIDOR A
-	{ type = 10, x = -176890.000000, y = 75624.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -177089.000000, y = 75657.000000, z = 1530.000000, rotation = 270.0, interact = true },
-	{ type = 10, x = -176990.000000, y = 77409.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -176990.000000, y = 77374.000000, z = 1530.000000, rotation = 90.0, interact = true },
+	{ type = 10, x = -176890.000000, y = 75624.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -177089.000000, y = 75657.000000, z = 1530.000000, rotation = 270.0, interact = true, guardian = true },
+	{ type = 10, x = -176990.000000, y = 77409.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -176990.000000, y = 77374.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
 
 	-- BLOCK B - INTERIOR
 	{ type = 9, x = -176155.000000, y = 75460.000000, z = 1880.000000, rotation = -90.0, interact = true },
@@ -254,7 +263,7 @@ Doors = {
 	{ type = 9, x = -178039.000000, y = 75245.000000, z = 1880.000000, rotation = 0.0, interact = true },
 	{ type = 9, x = -178039.000000, y = 75245.000000, z = 1530.000000, rotation = 0.0, interact = true },
 	{ type = 9, x = -178254.000000, y = 75610.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -177311.000000, y = 75362.000000, z = 1530.000000, rotation = 0.0, interact = true },
+	{ type = 10, x = -177311.000000, y = 75362.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
 	{ type = 1, x = -179228.000000, y = 74592.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true }, -- DOORS CONTROLE
 
 	-- BLOCK C - CELL DOORS (1st Floor)
@@ -276,6 +285,7 @@ Doors = {
 	{ type = 16, x = -178042.000000, y =  74610.000000, z = 1530.000000, rotation = 90.0, interact = false, group = "blockC" },
 
 	-- BLOCK C - CELL DOORS (2nd Floor)
+	{ type = 16, x = -179437.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -178742.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 16, x = -178742.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -179443.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
@@ -284,6 +294,7 @@ Doors = {
 	{ type = 16, x = -180838.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -180842.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 16, x = -181538.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
+	{ type = 16, x = -178738.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -181538.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 	{ type = 16, x = -180841.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -180838.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
@@ -292,33 +303,32 @@ Doors = {
 	{ type = 16, x = -179442.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -178738.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 	{ type = 16, x = -178042.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
-	{ type = 16, x = -178738.000000, y =  75610.000000, z = 1881.000000, rotation = -90.0, interact = false, group = "blockC" },
 	{ type = 15, x = -179438.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 	{ type = 16, x = -178742.000000, y =  74610.000000, z = 1881.000000, rotation = 90.0, interact = false, group = "blockC" },
 
 	-- CORIDOR C
-	{ type = 10, x = -178442.000000, y = 76151.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -178443.000000, y = 76649.000000, z = 1530.000000, rotation = 180.0, interact = true },
-	{ type = 10, x = -178639.000000, y = 77500.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -178042.000000, y = 78859.000000, z = 1530.000000, rotation = -90.0, interact = true },
+	{ type = 10, x = -178442.000000, y = 76151.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -178443.000000, y = 76649.000000, z = 1530.000000, rotation = 180.0, interact = true, guardian = true },
+	{ type = 10, x = -178639.000000, y = 77500.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -178042.000000, y = 78859.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
 
 	-- BLOCK D - GENERAL POPULATION OUTSIDE
 	{ type = 4, x = -175533.000000, y = 79635.000000, z = 1530.000000, rotation = -90.0, interact = true },
 
 	-- BLOCK D - INTERIOR
 	{ type = 9, x = -174055.000000, y = 79660.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 4, x = -171441.000000, y = 81057.000000, z = 1530.000000, rotation = 0.0, interact = true },
+	{ type = 1, x = -171441.000000, y = 81057.000000, z = 1530.000000, rotation = 90.0, interact = true },
 	{ type = 1, x = -173952.000000, y = 78945.000000, z = 1880.000000, rotation = -90.0, interact = true },
 	{ type = 1, x = -174314.000000, y = 79648.000000, z = 1881.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -175942.000000, y = 83258.976563, z = 1530.035889, rotation = 180.0, interact = true },
-	{ type = 10, x = -175976.000000, y = 83762.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -174439.000000, y = 78774.000000, z = 1530.000000, rotation = 90.0, interact = true },
-	{ type = 10, x = -173940.000000, y = 78808.000000, z = 1530.000000, rotation = -90.0, interact = true },
-	{ type = 10, x = -172438.000000, y = 80011.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -172438.000000, y = 81058.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -172749.000000, y = 81349.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -172749.000000, y = 83550.000000, z = 1530.000000, rotation = 0.0, interact = true },
-	{ type = 10, x = -174148.000000, y = 78445.000000, z = 1886.000000, rotation = -90.0, interact = true },
+	{ type = 10, x = -175942.000000, y = 83258.976563, z = 1530.035889, rotation = 180.0, interact = true, guardian = true },
+	{ type = 10, x = -175976.000000, y = 83762.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -174439.000000, y = 78774.000000, z = 1530.000000, rotation = 90.0, interact = true, guardian = true },
+	{ type = 10, x = -173940.000000, y = 78808.000000, z = 1530.000000, rotation = -90.0, interact = true, guardian = true },
+	{ type = 10, x = -172438.000000, y = 80011.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -172438.000000, y = 81058.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -172749.000000, y = 81349.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -172749.000000, y = 83550.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true },
+	{ type = 10, x = -174190.000000, y = 78455.000000, z = 1880.000000, rotation = -90.0, interact = true, guardian = true },
 	{ type = 1, x = -175032.000000, y = 84449.000000, z = 1530.000000, rotation = 0.0, interact = true, guardian = true }, -- DOORS CONTROLE
 
 	-- BLOCK D - CELL DOORS (1st Floor)
@@ -380,26 +390,26 @@ Jails = {
 	{ x = -174887.734370, y = 73891.492187, z = 1531.000000 },
 
 	-- BLOCK A (2nd Floor)
-	{ x = -175629.578125, y = 73893.210937, z = 1880.000000 },
-	{ x = -175617.578125, y = 73543.046875, z = 1880.000000 },
-	{ x = -175636.281250, y = 73184.617187, z = 1880.000000 },
-	{ x = -175640.015625, y = 72824.765625, z = 1880.000000 },
-	{ x = -175643.156250, y = 72504.335937, z = 1880.000000 },
-	{ x = -175660.656250, y = 72125.070312, z = 1880.000000 },
-	{ x = -175651.843750, y = 71801.742187, z = 1880.000000 },
-	{ x = -175598.062500, y = 71442.742187, z = 1880.000000 },
-	{ x = -175775.609375, y = 70882.859375, z = 1880.000000 },
-	{ x = -175399.125000, y = 70899.781250, z = 1880.000000 },
-	{ x = -175071.937500, y = 70865.132812, z = 1880.000000 },
-	{ x = -174689.406250, y = 70896.843750, z = 1880.000000 },
-	{ x = -174878.937500, y = 71433.140625, z = 1880.000000 },
-	{ x = -174886.421875, y = 71799.312500, z = 1880.000000 },
-	{ x = -174889.640625, y = 72130.148437, z = 1880.000000 },
-	{ x = -174881.937500, y = 72508.406250, z = 1880.000000 },
-	{ x = -174883.562500, y = 72844.367187, z = 1880.000000 },
-	{ x = -174888.093750, y = 73177.015625, z = 1880.000000 },
-	{ x = -174892.890625, y = 73539.601562, z = 1880.000000 },
-	{ x = -174897.609375, y = 73883.359375, z = 1880.000000 },
+	-- { x = -175629.578125, y = 73893.210937, z = 1880.000000 },
+	-- { x = -175617.578125, y = 73543.046875, z = 1880.000000 },
+	-- { x = -175636.281250, y = 73184.617187, z = 1880.000000 },
+	-- { x = -175640.015625, y = 72824.765625, z = 1880.000000 },
+	-- { x = -175643.156250, y = 72504.335937, z = 1880.000000 },
+	-- { x = -175660.656250, y = 72125.070312, z = 1880.000000 },
+	-- { x = -175651.843750, y = 71801.742187, z = 1880.000000 },
+	-- { x = -175598.062500, y = 71442.742187, z = 1880.000000 },
+	-- { x = -175775.609375, y = 70882.859375, z = 1880.000000 },
+	-- { x = -175399.125000, y = 70899.781250, z = 1880.000000 },
+	-- { x = -175071.937500, y = 70865.132812, z = 1880.000000 },
+	-- { x = -174689.406250, y = 70896.843750, z = 1880.000000 },
+	-- { x = -174878.937500, y = 71433.140625, z = 1880.000000 },
+	-- { x = -174886.421875, y = 71799.312500, z = 1880.000000 },
+	-- { x = -174889.640625, y = 72130.148437, z = 1880.000000 },
+	-- { x = -174881.937500, y = 72508.406250, z = 1880.000000 },
+	-- { x = -174883.562500, y = 72844.367187, z = 1880.000000 },
+	-- { x = -174888.093750, y = 73177.015625, z = 1880.000000 },
+	-- { x = -174892.890625, y = 73539.601562, z = 1880.000000 },
+	-- { x = -174897.609375, y = 73883.359375, z = 1880.000000 },
 
 	-- BLOCK B (1st Floor)		 
 	{ x = -176075.234375, y = 77384.164062, z = 1531.000000 },

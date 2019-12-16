@@ -3,7 +3,7 @@
 	"version": "1.0",
 	"client_scripts": [
 		"config.client.lua",
-		"src/player.client.lua",
+		"src/weapons.client.lua",
 		"src/doors.client.lua",
 		"src/clothing.client.lua"
 	],
