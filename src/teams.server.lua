@@ -10,6 +10,13 @@ Teams = {
 	guardian = {},
 }
 
+function ResetTeams()
+	Teams = {
+		prisoner = {},
+		guardian = {},
+	}
+end
+
 --
 --
 --

@@ -12,22 +12,9 @@ gameIsStart = false
 --
 function ResetGame()
 
-	Teams = {
-		prisoner = {},
-		guardian = {}
-	}
-
-	-- Doors
-	DeleteDoors()
-	CreateDoors()
-
-	-- Clear weapon
-	for _, playerId in pairs(GetAllPlayers()) do
-		SetPlayerWeapon(playerId, 1, 0, true, 1, true)
-		SetPlayerWeapon(playerId, 1, 0, true, 2, true)
-		SetPlayerWeapon(playerId, 1, 0, true, 3, true)
-	end
-
+	ResetTeams()
+	ResetDoors()
+	RemoveAllWeapons()
 	gameIsStart = false
 
 end
@@ -87,14 +74,23 @@ function EndGame()
 	gameIsStart = false
 	
 	for _, playerId in pairs(GetAllPlayers()) do
+
+		-- Remove All weapons
+		SetPlayerWeapon(playerId, 1, 0, true, 1, true)
+		SetPlayerWeapon(playerId, 1, 0, true, 2, true)
+		SetPlayerWeapon(playerId, 1, 0, true, 3, true)
+
+		-- Set Health
 		if not IsPlayerDead(playerId) then
-			SetPlayerHealth(playerId, 0)
+			SetPlayerHealth(playerId, 100)
+			SpawnPlayer()
+		else
+			SetPlayerRespawnTime(playerId, 60)
 		end
 
-		Delay(10000, function()			
-			SetPlayerRespawnTime(playerId, 10000)
-			CheckStartGame()
-		end)
+		-- Start Timer
+		CheckStartGame()
+
 	end
 
 end

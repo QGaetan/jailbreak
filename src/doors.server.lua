@@ -49,6 +49,14 @@ end
 --
 --
 --
+function ResetDoors()
+	DeleteDoors()
+	CreateDoors()
+end
+
+--
+--
+--
 AddRemoteEvent("controlInteract", function(playerid, groupName)
 	SetPlayerAnimation(playerid, "ENTERCODE")
 	Delay(2500, function()
