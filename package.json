@@ -6,6 +6,7 @@
 		"src/weapons.client.lua",
 		"src/doors.client.lua",
 		"src/clothing.client.lua"
+		"src/animation.client.lua"
 	],
 	"server_scripts": [
 		"config.server.lua",
